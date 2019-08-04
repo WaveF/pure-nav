@@ -125,7 +125,7 @@ var app = new Vue({
                 $('.sidebar').style.width = '80px';
                 $('.page-body').style.marginLeft = '80px';
                 $('.menu').style.paddingLeft = '30px';
-                $('.logo img').setAttribute('src', '../assets/images/logo_small.svg');
+                $('.logo img').setAttribute('src', './assets/images/logo_small.svg');
             }
         },
 
@@ -139,7 +139,7 @@ var app = new Vue({
                 $('.sidebar').style.width = '280px';
                 $('.page-body').style.marginLeft = '280px';
                 $('.menu').style.paddingLeft = '60px';
-                $('.logo img').setAttribute('src', '../assets/images/logo_large.svg');
+                $('.logo img').setAttribute('src', './assets/images/logo_large.svg');
             }
         },
 
@@ -171,7 +171,7 @@ var app = new Vue({
 
         about: function () {
             Swal.fire({
-                imageUrl: '../assets/images/logo_large.svg',
+                imageUrl: './assets/images/logo_large.svg',
                 imageWidth: 180,
                 html: [
                     '<div style="line-height:28px; text-align:left; padding:15px 0;">',
