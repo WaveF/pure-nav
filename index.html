@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="zh_CN">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>PURE-NAV</title>
+    <link rel="stylesheet" href="./assets/fonts/remixicon.css">
+    <link rel="stylesheet" href="./assets/css/style.css">
+    <!-- <link rel="stylesheet" href="./assets/css/debug.css"> -->
+</head>
+
+<body>
+    <div id="app" class="page" v-bind:is-mobile="isMobile">
+        <div class="sidebar">
+            <header class="logo">
+                <img src="./assets/images/logo_large.png">
+            </header>
+
+            <ul id="menu" class="menu">
+                <side-menu v-for="m in menu" v-bind:item="m" v-bind:key="m.catagory"></side-menu>
+                <li style="margin-top: 50px;">
+                    <i class="remixicon-pencil-ruler-line"></i>
+                    <span>设计团队</span>
+                </li>
+                <li>
+                    <i class="remixicon-settings-line"></i>
+                    <span>管理模式</span>
+                </li>
+            </ul>
+        </div>
+        <div class="page-body">
+            <nav class="navbar">
+                <div class="toggler" @click="toggleMenu">
+                    <i class="remixicon-menu-line"></i>
+                </div>
+                <ul>
+                    <li><a href="http://wavef.cn" target="_blank">BLOG</a></li>
+                    <li><a href="https://minicg.com" target="_blank">WEBSITE</a></li>
+                    <li><a href="https://github.com/WaveF/pure-nav/" target="_blank">GITHUB</a></li>
+                    <li><a href="https://dribbble.com/miniCG" target="_blank">DRIBBBLE</a></li>
+                    <li><a v-on:click="about" target="_blank">ABOUT</a></li>
+                </ul>
+            </nav>
+            <div class="content">
+
+                <card-box v-for="i in menu" v-bind:menu="i" v-bind:key="i.catagory">
+                    <card v-for="p in products" :catagory="i.catagory" v-if="p.catagory==i.catagory" v-bind:product="p" v-bind:key="p.id"></card>
+                </card-box>
+
+            </div>
+            <footer class="footer">
+                <div>
+                    <a href="https://github.com/WaveF/pure-nav/">PURENAV</a>
+                    <span> - 无需后台的全静态前端导航网站</span>
+                    <span style="margin-left:20px;">MAKE WITH ♥ BY WAVEF</span>
+                </div>
+            </footer>
+        </div>
+    </div>
+
+    <script src="./assets/js/mock-min.js"></script>
+    <script src="./assets/js/vue.dist.js"></script>
+    <script src="./assets/js/axios.min.js"></script>
+    <script src="./assets/js/sweetalert2.all.min.js"></script>
+    <script src="./assets/js/main.js"></script>
+</body>
+
+</html>
