@@ -36,6 +36,7 @@ html body .page .sidebar {
   overflow: hidden;
   transition: 0.4s;
   height: 100%;
+  max-height: 100%;
 }
 @media screen and (max-width: 1024px) {
   html body .page .sidebar {
@@ -49,6 +50,9 @@ html body .page .sidebar .logo {
   font-size: 0;
   border-bottom: 1px solid #313437;
   text-align: center;
+  background: url(../images/logo_large.svg) center;
+  background-size: 178px auto;
+  background-repeat: no-repeat;
 }
 html body .page .sidebar .logo img {
   height: 40px;
@@ -56,9 +60,9 @@ html body .page .sidebar .logo img {
   vertical-align: middle;
 }
 html body .page .sidebar .menu {
-  margin: 25px 0 0;
-  padding: 0 30px 30px;
   padding-left: 60px;
+  padding: 0 30px 30px;
+  margin: 25px 0 0;
   list-style-type: none;
   transition: 0.4s;
 }
@@ -88,6 +92,18 @@ html body .page .sidebar .menu li a:visited {
 }
 html body .page .sidebar .menu li:hover {
   color: white;
+}
+html body .page .sidebar-collaps {
+  width: 80px;
+}
+html body .page .sidebar-collaps .logo {
+  background: url(../images/logo_small.svg) center;
+  background-size: 40px auto;
+  background-repeat: no-repeat;
+}
+html body .page .sidebar-dropdown {
+  height: auto;
+  max-height: 600px;
 }
 html body .page .page-body {
   position: relative;

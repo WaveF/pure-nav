@@ -13,10 +13,8 @@
 
 <body>
     <div id="app" class="page" v-bind:is-mobile="isMobile">
-        <div class="sidebar">
-            <header class="logo">
-                <img src="./assets/images/logo_large.png">
-            </header>
+        <div class="sidebar" v-bind:class="{ 'sidebar-collaps': isCollaps, 'sidebar-dropdown': isDropdown }">
+            <header class="logo"></header>
 
             <ul id="menu" class="menu">
                 <side-menu v-for="m in menu" v-bind:item="m" v-bind:key="m.catagory"></side-menu>
@@ -30,6 +28,7 @@
                 </li>
             </ul>
         </div>
+
         <div class="page-body">
             <nav class="navbar">
                 <div class="toggler" @click="toggleMenu">

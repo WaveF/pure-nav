@@ -67,6 +67,8 @@ var app = new Vue({
     data() {
         return {
             isMobile: $('.navbar').clientWidth < 100,
+            isCollaps: false,
+            isDropdown: false,
             isMenuExpand: !this.isMobile,
 
             // fakeMenu: 
@@ -80,8 +82,8 @@ var app = new Vue({
     created() {
         // 侦听窗体尺寸变化
         window.resizeTimer = null;
-        this.onWinResize();
-        window.addEventListener("resize", this.onWinResize);
+        // this.onWinResize();
+        // window.addEventListener("resize", this.onWinResize);
 
         // 根据初始状态重置菜单
         // this.isMenuExpand ? this.collapsMenu() : this.expandMenu();
@@ -119,28 +121,28 @@ var app = new Vue({
         // 折叠菜单
         collapsMenu: function () {
             console.log('折叠');
-            if (this.isMobile) {
-                $('.sidebar').style.height = '80px';
-            } else {
-                $('.sidebar').style.width = '80px';
-                $('.page-body').style.marginLeft = '80px';
-                $('.menu').style.paddingLeft = '30px';
-                $('.logo img').setAttribute('src', './assets/images/logo_small.svg');
-            }
+            // if (this.isMobile) {
+            //     $('.sidebar').style.height = '80px';
+            // } else {
+            //     $('.sidebar').style.width = '80px';
+            //     $('.page-body').style.marginLeft = '80px';
+            //     $('.menu').style.paddingLeft = '30px';
+            //     $('.logo img').setAttribute('src', './assets/images/logo_small.svg');
+            // }
         },
 
         // 展开菜单
         expandMenu: function () {
             console.log('展开');
-            if (this.isMobile) {
-                // 需要有具体数值，用auto会没有动画所以不能用class切换
-                $('.sidebar').style.height = $('.menu').clientHeight + 'px';
-            } else {
-                $('.sidebar').style.width = '280px';
-                $('.page-body').style.marginLeft = '280px';
-                $('.menu').style.paddingLeft = '60px';
-                $('.logo img').setAttribute('src', './assets/images/logo_large.svg');
-            }
+            // if (this.isMobile) {
+            //     // 需要有具体数值，用auto会没有动画所以不能用class切换
+            //     $('.sidebar').style.height = $('.menu').clientHeight + 'px';
+            // } else {
+            //     $('.sidebar').style.width = '280px';
+            //     $('.page-body').style.marginLeft = '280px';
+            //     $('.menu').style.paddingLeft = '60px';
+            //     $('.logo img').setAttribute('src', './assets/images/logo_large.svg');
+            // }
         },
 
         eachLoop: function (arr, func) {
