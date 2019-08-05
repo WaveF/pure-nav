@@ -24,7 +24,6 @@ html body a:visited {
 }
 html body .page {
   height: inherit;
-  overflow: hidden;
 }
 html body .page .sidebar {
   position: fixed;
