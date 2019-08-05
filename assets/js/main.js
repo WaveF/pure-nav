@@ -52,7 +52,21 @@ Vue.component('card', {
     ].join(''),
     methods: {
         openLink: function (link) {
-            window.open(link);
+            Swal.fire({
+                title: '外部链接',
+                html: [
+                    '<p>即将访问以下链接，是否继续？</p>',
+                    '<a href="' + link + '">' + link + '</a>'
+                ].join(''),
+                showCancelButton: true,
+                focusConfirm: false,
+                confirmButtonText: '继续',
+                cancelButtonText: '取消',
+                backdrop: 'rgba(44, 46, 47, 0.9)'
+            }).then(function(result){
+                if (!result.value) return;
+                window.open(link);
+            });
         },
         bgImage: function (img) {
             var bgUrl = 'url("' + img + '")'
@@ -151,7 +165,7 @@ var app = new Vue({
                 ].join(''),
                 confirmButtonText: '了解',
                 footer: '<span style="color:#06c">注意：PURENAV目前处于开发当中，功能尚未成型且会有劲多BUG！</span>',
-                backdrop: '#2c2e2f'
+                backdrop: 'rgba(44, 46, 47, 0.9)'
             });
         }
 
