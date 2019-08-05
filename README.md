@@ -19,6 +19,7 @@ PURENAV 基于VUEJS非编译方式构建，旨在使用较少的库进行开发�
 
 - 从JSONBIN存取数据（AXIOS）
 - 前台增删查改功能（SweetAlert 或 dat.GUI 或其他）
+- 卡片排序
 
 ### 有BUG：
 
