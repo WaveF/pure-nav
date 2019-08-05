@@ -66,7 +66,7 @@ var app = new Vue({
     el: '#app',
     data() {
         return {
-            isMobile: $('.navbar').clientWidth < 100,
+            isMobile: false,
             isCollaps: false,
             isDropdown: false,
             isMenuExpand: !this.isMobile,
@@ -76,17 +76,11 @@ var app = new Vue({
             products: []
         }
     },
-    beforeCreate() {
-        this.menu = '';
-    },
     created() {
         // 侦听窗体尺寸变化
         window.resizeTimer = null;
-        // this.onWinResize();
-        // window.addEventListener("resize", this.onWinResize);
-
-        // 根据初始状态重置菜单
-        // this.isMenuExpand ? this.collapsMenu() : this.expandMenu();
+        window.addEventListener("resize", this.onWinResize);
+        this.onWinResize();
 
         var MockData = Mock.mock({
             "menu|5": [{
@@ -114,35 +108,8 @@ var app = new Vue({
         // 切换菜单状态
         // FIXME: 测试代码很不稳定，要改为切换css类来展开折叠，看看怎么把界面逻辑抽离数据
         toggleMenu: function () {
-            this.isMenuExpand ? this.collapsMenu() : this.expandMenu();
-            this.isMenuExpand = !this.isMenuExpand;
-        },
-
-        // 折叠菜单
-        collapsMenu: function () {
-            console.log('折叠');
-            // if (this.isMobile) {
-            //     $('.sidebar').style.height = '80px';
-            // } else {
-            //     $('.sidebar').style.width = '80px';
-            //     $('.page-body').style.marginLeft = '80px';
-            //     $('.menu').style.paddingLeft = '30px';
-            //     $('.logo img').setAttribute('src', './assets/images/logo_small.svg');
-            // }
-        },
-
-        // 展开菜单
-        expandMenu: function () {
-            console.log('展开');
-            // if (this.isMobile) {
-            //     // 需要有具体数值，用auto会没有动画所以不能用class切换
-            //     $('.sidebar').style.height = $('.menu').clientHeight + 'px';
-            // } else {
-            //     $('.sidebar').style.width = '280px';
-            //     $('.page-body').style.marginLeft = '280px';
-            //     $('.menu').style.paddingLeft = '60px';
-            //     $('.logo img').setAttribute('src', './assets/images/logo_large.svg');
-            // }
+            this.isCollaps  = !this.isCollaps;
+            this.isDropdown = !this.isDropdown;
         },
 
         eachLoop: function (arr, func) {
@@ -158,15 +125,6 @@ var app = new Vue({
 
             resizeTimer = setTimeout(function () {
                 this.isMobile = ($('.navbar').clientWidth < 100);
-
-                // 重置侧栏高度
-                if (this.isMobile) {
-                    $('.sidebar').style.height = '80px';
-                    this.isMenuExpand = false;
-                } else {
-                    $('.sidebar').style.height = '100%';
-                    this.isMenuExpand = true;
-                }
             }.bind(this), 400);
 
         },

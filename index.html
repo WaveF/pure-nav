@@ -13,7 +13,7 @@
 
 <body>
     <div id="app" class="page" v-bind:is-mobile="isMobile">
-        <div class="sidebar" v-bind:class="{ 'sidebar-collaps': isCollaps, 'sidebar-dropdown': isDropdown }">
+        <div class="sidebar" v-bind:class="{ 'sidebar-collaps': isCollaps&!isMobile, 'sidebar-dropdown': isDropdown&isMobile }">
             <header class="logo"></header>
 
             <ul id="menu" class="menu">
@@ -29,7 +29,7 @@
             </ul>
         </div>
 
-        <div class="page-body">
+        <div class="page-body" v-bind:class="{ 'page-body-collaps': isCollaps&!isMobile }">
             <nav class="navbar">
                 <div class="toggler" @click="toggleMenu">
                     <i class="remixicon-menu-line"></i>
