@@ -15,7 +15,7 @@ Vue.component('side-menu', {
         gotoAnchor: function (id) {
             window.scrollTo({ "behavior": "smooth", "top": $('#catagory_' + id).offsetTop - 120 })
             if (!this.$parent.isMobile) return;
-            this.$parent.collapsMenu();
+            this.$parent.isDropdown = false;
         }
     }
 });
@@ -106,7 +106,6 @@ var app = new Vue({
     methods: {
 
         // 切换菜单状态
-        // FIXME: 测试代码很不稳定，要改为切换css类来展开折叠，看看怎么把界面逻辑抽离数据
         toggleMenu: function () {
             this.isCollaps  = !this.isCollaps;
             this.isDropdown = !this.isDropdown;
@@ -120,7 +119,7 @@ var app = new Vue({
 
         // 响应窗体尺寸变化
         onWinResize: function (e) {
-            // 模拟lodash的debounce，费事又引多一个插件
+            // 模拟 lodash 的 debounce，费事又引多一个插件
             if (resizeTimer) { clearTimeout(resizeTimer) }
 
             resizeTimer = setTimeout(function () {
@@ -131,13 +130,14 @@ var app = new Vue({
 
         about: function () {
             Swal.fire({
-                imageUrl: './assets/images/logo_large.svg',
-                imageWidth: 180,
+                // imageUrl: './assets/images/logo_large.svg',
+                // imageWidth: 180,
+                title: '<strong>PURE</strong>NAV',
                 html: [
                     '<div style="line-height:28px; text-align:left; padding:15px 0;">',
                     '    <div style="margin-bottom:10px;">',
-                    '        PureNav灵感来源于<a href="https://webstack.cc/cn/index.html">WebStack</a>，目标也是制作纯前端的导航页，',
-                    '        由于我太过菜鸡以致于在修改WebStack的过程中遇到很多不认识的库和衍生的问题，看着那上千行JS瞬间肾虚，于是萌生了重构的邪恶想法。',
+                    '        PureNav灵感源来<a href="https://webstack.cc/cn/index.html">WebStack</a>，本想拿来为公司内部产品页改版，',
+                    '        但因WAVEF太过菜鸡以致在修改WebStack时不断遇到问题，怒视众多JS瞬间崩溃，顿时萌生了重构的邪恶想法。',
                     '    </div>',
 
                     '    <div style="margin-bottom:10px;">',
@@ -150,7 +150,8 @@ var app = new Vue({
                     '</div>',
                 ].join(''),
                 confirmButtonText: '了解',
-                footer: '<span style="color:#f30">注：PURENAV目前处于开发当中，功能尚未成型且会有劲多BUG！</span>'
+                footer: '<span style="color:#06c">注意：PURENAV目前处于开发当中，功能尚未成型且会有劲多BUG！</span>',
+                backdrop: '#2c2e2f'
             });
         }
 
