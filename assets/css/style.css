@@ -276,25 +276,71 @@ html body .page .page-body .footer span {
 html body .page .page-body-collaps {
   margin-left: 80px;
 }
+/* override sweetalert2 style */
+.swal2-modal {
+  box-shadow: 0 10px 80px rgba(0, 0, 0, 0.2);
+}
 .swal2-popup .swal2-styled:focus {
   box-shadow: none !important;
 }
-.swal2-title-custom {
+.swal2-title {
   font-size: 22px !important;
   font-weight: normal !important;
 }
-.swal2-content-custom {
+.swal2-content {
   font-size: 14px !important;
   font-weight: normal !important;
 }
-.swal2-actions-custom {
-  font-size: 14px !important;
+.swal2-actions {
+  font-size: 12px !important;
 }
-.swal2-footer-custom {
+.swal2-footer {
   font-size: 12px !important;
   font-weight: normal !important;
 }
-.swal2-confirm-button-custom {
-  background: #09f !important;
-  outline: 0 !important;
+.swal2-confirm {
+  background-color: #09f !important;
+}
+.swal2-cancel {
+  background-color: #ccc !important;
+}
+.swal2-close {
+  font-weight: bold !important;
+  transform: scale(0.5) rotate(0deg) !important;
+  transition: 0.4s !important;
+}
+.swal2-close:hover {
+  font-weight: bold !important;
+  transform: scale(0.5) rotate(180deg) !important;
+}
+.swal2-container.swal2-shown {
+  background: rgba(0, 0, 0, 0.2) !important;
+}
+.swal2-file,
+.swal2-input,
+.swal2-textarea {
+  width: 80% !important;
+  font-size: 13px !important;
+  padding: 10px !important;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Helvetica, "Microsoft YaHei", "PingFang SC", "Hiragino Sans GB", SimSun, sans-serif !important;
+}
+.swal2-file:focus,
+.swal2-input:focus,
+.swal2-textarea:focus {
+  border: 1px solid #09f !important;
+  box-shadow: 0 0 4px rgba(0, 153, 255, 0.2) !important;
+}
+.swal2-icon {
+  width: 32px !important;
+  height: 32px !important;
+  margin: 10px auto !important;
+}
+.swal2-icon:before {
+  font-size: 26px !important;
+  font-weight: bold !important;
+}
+.swal2-image {
+  background-color: #f2f2f2;
+  border-radius: 2px !important;
+  box-shadow: 0 10px 10px rgba(0, 0, 0, 0.04) !important;
 }

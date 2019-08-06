@@ -53,6 +53,10 @@ Vue.component('card', {
     methods: {
         openLink: function (link) {
             Swal.fire({
+                imageUrl: 'https://unsplash.it/400/200',
+                imageWidth: 400,
+                imageHeight: 200,
+                imageAlt: 'Custom image',
                 title: '外部链接',
                 html: [
                     '<p>即将访问以下链接，是否继续？</p>',
@@ -62,7 +66,8 @@ Vue.component('card', {
                 focusConfirm: false,
                 confirmButtonText: '继续',
                 cancelButtonText: '取消',
-                backdrop: 'rgba(44, 46, 47, 0.9)'
+                reverseButtons: true,
+                showCloseButton: true
             }).then(function(result){
                 if (!result.value) return;
                 window.open(link);
@@ -163,9 +168,8 @@ var app = new Vue({
                     '</div>',
                 ].join(''),
                 confirmButtonText: '了解',
-                footer: '<span style="color:#09f">注意：PURENAV目前处于开发当中，功能尚未成型且会有劲多BUG！</span>',
-                backdrop: 'rgba(44, 46, 47, 0.9)',
-                customClass: {
+                footer: '<span style="color:#09f">注意：PURENAV目前处于开发当中，功能尚未成型且会有劲多BUG！</span>'
+                /*customClass: {
                     title        : 'swal2-title-custom',
                     content      : 'swal2-content-custom',
                     actions      : 'swal2-actions-custom',
@@ -180,7 +184,7 @@ var app = new Vue({
                     // icon         : 'swal2-icon-custom',
                     // image        : 'swal2-image-custom',
                     // input        : 'swal2-input-custom',
-                }
+                }*/
             });
         }
 
