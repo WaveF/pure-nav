@@ -168,43 +168,25 @@ var app = new Vue({
 
         about: function () {
             Swal.fire({
-                // imageUrl: './assets/images/logo_large.svg',
-                // imageWidth: 180,
                 title: '<strong>PURE</strong>NAV',
                 html: [
-                    '<div style="line-height:28px; text-align:left; padding:15px 0 0;">',
+                    '<div style="line-height:28px; text-align:justify; padding:15px 0 0;">',
                     '    <div style="margin-bottom:10px;">',
-                    '        PureNav灵感源来<a href="https://webstack.cc/cn/index.html">WebStack</a>，本想拿来为公司内部产品页改版，',
+                    '        &emsp;&emsp;PureNav灵感源来<a href="https://webstack.cc/cn/index.html">WebStack</a>，本想拿来为公司内部产品页改版，',
                     '        但因WAVEF太过菜鸡以致在修改WebStack时不断遇到问题，怒视众多JS瞬间崩溃，顿时萌生了重构的邪恶想法。',
                     '    </div>',
 
                     '    <div style="margin-bottom:10px;">',
-                    '        初步设想：</br>沿用WebStack外观设计，VUEJS构建前台，以JSON初始化页面数据，并通过某些免费在线JSON存取服务充当数据库，用户可以直接在前台对数据进行增删查改。',
+                    '        初步设想：</br>&emsp;&emsp;沿用WebStack外观设计，VUEJS构建前台，以JSON初始化页面数据，并通过某些免费在线JSON存取服务充当数据库，用户可以直接在前台对数据进行增删查改。',
                     '    </div>',
 
                     '    <div>',
-                    '        能少引一个库就少引一个库以免逻辑过于复杂，PURE（纯洁）取意于此，因为WAVEF是第一次写VUE所以只能从非编译方式开搞，感觉引入打包会更麻烦，应该也适合和我一样水平的菜鸡互相学习，欢迎来啄。',
+                    '        &emsp;&emsp;能少引一个库就少引一个库以免逻辑过于复杂，PURE（纯洁）取意于此，因为WAVEF是第一次写VUE所以只能从非编译方式开搞，感觉引入打包会更麻烦，应该也适合和我一样水平的菜鸡互相学习，欢迎来啄。',
                     '    </div>',
                     '</div>',
                 ].join(''),
                 confirmButtonText: '明白',
                 footer: '<span style="color:#09f">注意：PURENAV目前处于开发当中，功能尚未成型且会有劲多BUG！</span>'
-                /*customClass: {
-                    title        : 'swal2-title-custom',
-                    content      : 'swal2-content-custom',
-                    actions      : 'swal2-actions-custom',
-                    footer       : 'swal2-footer-custom',
-                    confirmButton: 'swal2-confirm-button-custom',
-
-                    // closeButton  : 'swal2-close-button-custom',
-                    // cancelButton : 'swal2-cancel-button-custom',
-                    // container    : 'swal2-container-custom',
-                    // popup        : 'swal2-popup-custom',
-                    // header       : 'swal2-header-custom',
-                    // icon         : 'swal2-icon-custom',
-                    // image        : 'swal2-image-custom',
-                    // input        : 'swal2-input-custom',
-                }*/
             });
         }
 
