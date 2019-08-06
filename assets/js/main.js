@@ -53,10 +53,10 @@ Vue.component('card', {
     methods: {
         openLink: function (link) {
             Swal.fire({
-                imageUrl: 'https://unsplash.it/400/200',
-                imageWidth: 400,
-                imageHeight: 200,
-                imageAlt: 'Custom image',
+                // imageUrl: 'https://unsplash.it/400/200',
+                // imageWidth: 400,
+                // imageHeight: 200,
+                // imageAlt: 'Custom image',
                 title: '外部链接',
                 html: [
                     '<p>即将访问以下链接，是否继续？</p>',
@@ -187,7 +187,7 @@ var app = new Vue({
                     '    </div>',
                     '</div>',
                 ].join(''),
-                confirmButtonText: '了解',
+                confirmButtonText: '明白',
                 footer: '<span style="color:#09f">注意：PURENAV目前处于开发当中，功能尚未成型且会有劲多BUG！</span>'
                 /*customClass: {
                     title        : 'swal2-title-custom',
