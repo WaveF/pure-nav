@@ -51,27 +51,8 @@ Vue.component('card', {
         '</li>'
     ].join(''),
     methods: {
-        openLink: function (link) {
-            Swal.fire({
-                // imageUrl: 'https://unsplash.it/400/200',
-                // imageWidth: 400,
-                // imageHeight: 200,
-                // imageAlt: 'Custom image',
-                title: '外部链接',
-                html: [
-                    '<p>即将访问以下链接，是否继续？</p>',
-                    '<a href="' + link + '">' + link + '</a>'
-                ].join(''),
-                showCancelButton: true,
-                focusConfirm: false,
-                confirmButtonText: '继续',
-                cancelButtonText: '取消',
-                reverseButtons: true,
-                showCloseButton: true
-            }).then(function(result){
-                if (!result.value) return;
-                window.open(link);
-            });
+        openLink: function(link){
+            this.$parent.$parent.openLink(link)
         },
         bgImage: function (img) {
             var bgUrl = 'url("' + img + '")'
@@ -156,6 +137,29 @@ var app = new Vue({
             });
         },
 
+        openLink: function (link) {
+            Swal.fire({
+                // imageUrl: 'https://unsplash.it/400/200',
+                // imageWidth: 400,
+                // imageHeight: 200,
+                // imageAlt: 'Custom image',
+                title: '外部链接',
+                html: [
+                    '<p>即将访问以下链接，是否继续？</p>',
+                    '<span style="color:#09f">' + link + '</span>'
+                ].join(''),
+                showCancelButton: true,
+                focusConfirm: false,
+                confirmButtonText: '继续',
+                cancelButtonText: '取消',
+                reverseButtons: true,
+                showCloseButton: true
+            }).then(function(result){
+                if (!result.value) return;
+                window.open(link);
+            });
+        },
+
         // 响应窗体尺寸变化
         onWinResize: function (e) {
             // 模拟 lodash 的 debounce，费事又引多一个插件
@@ -186,6 +190,7 @@ var app = new Vue({
                     '</div>',
                 ].join(''),
                 confirmButtonText: '明白',
+                showCloseButton: true,
                 footer: '<span style="color:#09f">注意：PURENAV目前处于开发当中，功能尚未成型且会有劲多BUG！</span>'
             });
         }
