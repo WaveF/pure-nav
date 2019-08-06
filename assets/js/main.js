@@ -90,12 +90,16 @@ var app = new Vue({
             isDropdown: false,
             isMenuExpand: !this.isMobile,
 
+            api: 'https://www.jsonstore.io/8723202190b3fd6c738095e3ac1bd2a21925efe8d90be60b70af127812223003',
+
             // fakeMenu: 
             menu: [],
             products: []
         }
     },
     created() {
+        var _this = this;
+
         // 侦听窗体尺寸变化
         window.resizeTimer = null;
         window.addEventListener("resize", this.onWinResize);
@@ -119,8 +123,11 @@ var app = new Vue({
             }]
         });
 
-        this.menu = MockData.menu;
-        this.products = MockData.products;
+        this.loadData(function(res){
+            var result = res.data.result;
+            _this.menu = result.menu || MockData.menu;
+            _this.products = result.products || MockData.products;
+        });
     },
     methods: {
 
@@ -130,10 +137,23 @@ var app = new Vue({
             this.isDropdown = !this.isDropdown;
         },
 
-        eachLoop: function (arr, func) {
-            for (var i in arr) {
-                func(i, arr[i]);
-            }
+        loadData: function (callback) {
+            axios.get(this.api)
+            .then(callback)
+            .catch(function (err) {
+                console.log(err);
+            });
+        },
+
+        saveData: function (callback) {
+            axios.put(this.api, {
+                menu: this.menu,
+                products: this.products
+            })
+            .then(callback)
+            .catch(function (err) {
+                console.log(err);
+            });
         },
 
         // 响应窗体尺寸变化
