@@ -179,7 +179,7 @@ var app = new Vue({
                     '    </div>',
 
                     '    <div style="margin-bottom:10px;">',
-                    '        初步设想：</br>沿用WebStack外观设计，VUEJS构建前台，以JSON初始化页面数据，并通过JSONBIN.IO提供的在线存取服务充当数据库，用户可以直接在前台对数据进行增删查改。',
+                    '        初步设想：</br>沿用WebStack外观设计，VUEJS构建前台，以JSON初始化页面数据，并通过某些免费在线JSON存取服务充当数据库，用户可以直接在前台对数据进行增删查改。',
                     '    </div>',
 
                     '    <div>',
