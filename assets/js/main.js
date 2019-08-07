@@ -37,9 +37,13 @@ Vue.component('card-box', {
 Vue.component('card', {
     props: ['product'],
     template: [
-        '<li>',
+        '<li v-bind:card="product.title">',
         '    <div class="card-item">',
-        '        <div class="card-editor"></div>',
+        '        <ul class="card-controls" v-if="$parent.$parent.admin">',
+        '            <li v-on:click="moveCard"><i class="remixicon-drag-move-2-fill"></i></li>',
+        '            <li v-on:click="editCard"><i class="remixicon-edit-2-line"></i></li>',
+        '            <li v-on:click="killCard"><i class="remixicon-delete-bin-line"></i></li>',
+        '        </ul>',
         '        <div class="card-content" v-bind:title="product.title" v-on:click="openLink(product.link)">',
         '            <div class="icon" :style="bgImage(product.logo)"></div>',
         '            <div class="info">',
@@ -52,7 +56,19 @@ Vue.component('card', {
     ].join(''),
     methods: {
         openLink: function(link){
-            this.$parent.$parent.openLink(link)
+            this.$parent.$parent.openLink(link);
+        },
+        moveCard: function (e) {
+        },
+        editCard: function (e) {
+            console.log(e);
+        },
+        killCard: function (e) {
+            var card = this.getCard(e.currentTarget);
+            this.$parent.$parent.killCard(card);
+        },
+        getCard: function (target) {
+            return target.parentNode.parentNode.parentNode;
         },
         bgImage: function (img) {
             var bgUrl = 'url("' + img + '")'
@@ -66,14 +82,14 @@ var app = new Vue({
     el: '#app',
     data() {
         return {
+            api: 'https://www.jsonstore.io/8723202190b3fd6c738095e3ac1bd2a21925efe8d90be60b70af127812223003',
+            
             isMobile: false,
             isCollaps: false,
             isDropdown: false,
             isMenuExpand: !this.isMobile,
 
-            api: 'https://www.jsonstore.io/8723202190b3fd6c738095e3ac1bd2a21925efe8d90be60b70af127812223003',
-
-            // fakeMenu: 
+            admin: true,
             menu: [],
             products: []
         }
@@ -112,12 +128,23 @@ var app = new Vue({
     },
     methods: {
 
+        killCard: function (target) {
+            var cardName = target.getAttribute('card');
+            for (var i in this.products) {
+                if (this.products[i].title == cardName) {
+                    this.products.splice(i, 1);
+                    break;
+                }
+            }
+        },
+
         // 切换菜单状态
         toggleMenu: function () {
             this.isCollaps  = !this.isCollaps;
             this.isDropdown = !this.isDropdown;
         },
 
+        // 加载数据
         loadData: function (callback) {
             axios.get(this.api)
             .then(callback)
@@ -126,6 +153,7 @@ var app = new Vue({
             });
         },
 
+        // 保存数据
         saveData: function (callback) {
             axios.put(this.api, {
                 menu: this.menu,
@@ -137,6 +165,7 @@ var app = new Vue({
             });
         },
 
+        // 打开链接
         openLink: function (link) {
             Swal.fire({
                 // imageUrl: 'https://unsplash.it/400/200',
@@ -170,6 +199,7 @@ var app = new Vue({
             }.bind(this), 400);
         },
 
+        // 关于
         about: function () {
             Swal.fire({
                 title: '<strong>PURE</strong>NAV',

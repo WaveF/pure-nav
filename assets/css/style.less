@@ -14,7 +14,7 @@
 
 a, a:visited { color: @dark; text-decoration: none; }
 a:hover, a:active { color: @blue; }
-
+ul { list-style-type: none; padding: 0; }
 
 html {
     height: 100%; font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Helvetica, "Microsoft YaHei", "PingFang SC", "Hiragino Sans GB", SimSun, sans-serif;
@@ -31,9 +31,9 @@ html {
                     img { height: 40px; margin: 0 auto; vertical-align: middle; }
                 }
                 .menu {
-                    padding:0 30px 0 60px; margin: 25px 0 0; list-style-type: none; transition: @dur;
+                    padding:0 30px 60px 60px; margin: 25px 0 0; transition: padding @dur;
                     li {
-                        height: 45px; line-height: 45px; border-bottom: @dark-line; font-size: 0; color: @grey; overflow: hidden; cursor: pointer; transition: @dur;
+                        height: 45px; line-height: 45px; border-bottom: @dark-line; font-size: 0; color: @grey; overflow: hidden; cursor: pointer; transition: color @dur;
                         i { font-size: 14px; margin-right: 10px; }
                         span { font-size: 14px; color: inherit; }
                         a, a:visited { color: inherit; text-decoration: none; font-size: 14px; }
@@ -47,10 +47,10 @@ html {
                 .menu { padding-left: 32px; }
             }
             .sidebar-dropdown {
-                height: auto; max-height: 1600px; transition: 1s ease-out; /* 此处应有掌声 */
+                height: auto; max-height: 1000px; transition: .8s ease-out; /* 此处应有掌声 */
             }
             .page-body {
-                position: relative; margin-left: @side-width; height: inherit; min-height: 100%; transition: @dur;
+                position: relative; margin-left: @side-width; height: inherit; min-height: 100%; transition: margin @dur;
                 @media screen and (max-width: 1024px) { margin-left: 0; }
                 .navbar {
                     position: fixed; top: 0; width: 100%; height: @header-height; line-height: @header-height; background: white; box-shadow: 0 2px 4px rgba(0,0,0,.03); overflow: hidden; z-index: 998;
@@ -62,11 +62,11 @@ html {
                         i { font-size: 14px; }
                     }
                     ul {
-                        display: block; float: left; list-style-type: none; margin: 0; padding: 0; overflow: hidden;
+                        display: block; float: left; margin: 0; overflow: hidden;
                         li {
-                            float: left; color: @dark; padding: 0 20px; cursor: pointer; border-bottom: 1px solid transparent; opacity: @nav-alpha; transition: @dur;
+                            float: left; color: @dark; padding: 0 20px; cursor: pointer; border-bottom: 1px solid transparent; opacity: @nav-alpha; transition: opacity @dur;
                             a { color: @dark; }
-                            &:hover { opacity: 1; border-bottom: 1px solid @light-blue; }
+                            &:hover { opacity: 1; }
                         }
                     }
                 }
@@ -78,15 +78,25 @@ html {
                             &::before { position: absolute; top: 4px; left: -22px; content: '\ec9a'; font-family: 'remixicon'; }
                         }
                         .card-list {
-                            display: flex; flex-wrap: wrap; list-style-type: none; margin: 20px 0 30px; padding: 0;
+                            display: flex; flex-wrap: wrap; margin: 20px 0 30px; padding: 0;
                             li {
                                 cursor: pointer; width: 25%;
                                 @media screen and (max-width: 1024px) { width: 100%; }
                                 .card-item {
-                                    position: relative; margin-right: 20px; margin-bottom: 20px; transition: @dur;
-                                    &:hover { margin-top: -5px; box-shadow: 0 26px 40px -24px rgba(0, 36, 100, 0.3); }
+                                    position: relative; margin-right: 20px; margin-bottom: 20px; overflow:hidden; transition: @dur;
+                                    &:hover {
+                                        margin-top: -5px; box-shadow: 0 26px 40px -24px rgba(0, 36, 100, 0.3);
+                                        .card-controls { bottom: 0; }
+                                    }
+                                    .card-controls {
+                                        position: absolute; bottom: -40px; left: 0; width: 100%; display: flex; opacity: .9; transition: bottom @dur;
+                                        li {
+                                            flex: 1; text-align: center; color:#fff; padding: 8px 0; background: @dark; transition: background @dur;
+                                            &:hover { background: @blue; }
+                                        }
+                                    }
                                     .card-content {
-                                        display: flex; padding: 15px; height: 50px; background: white; border-radius: 5px; border: @light-line; transition: @dur;
+                                        display: flex; padding: 15px; height: 50px; background: white; border-radius: 5px; border: @light-line;
                                         .icon { min-width: @icon-size; height: @icon-size; background-size: @icon-size; border-radius: 2px; }
                                         .info {
                                             flex: 1; margin-left: 15px; overflow: hidden;

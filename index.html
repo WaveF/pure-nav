@@ -30,6 +30,7 @@
         </div>
 
         <div class="page-body" v-bind:class="{ 'page-body-collaps': isCollaps&!isMobile }">
+
             <nav class="navbar">
                 <div class="toggler" @click="toggleMenu">
                     <i class="remixicon-menu-line"></i>
@@ -42,18 +43,19 @@
                     <li><a v-on:click="about">ABOUT</a></li>
                 </ul>
             </nav>
-            <div class="content">
 
+            <div class="content">
                 <card-box v-for="i in menu" v-bind:menu="i" v-bind:key="i.catagory">
                     <card v-for="p in products" :catagory="i.catagory" v-if="p.catagory==i.catagory" v-bind:product="p" v-bind:key="p.id"></card>
                 </card-box>
-
             </div>
+
             <footer class="footer">
                 <a href="https://github.com/WaveF/pure-nav/"><strong>PURENAV</strong></strong></a>
                 <span> - 无需后台的全静态前端导航网站</span>
                 <span style="margin-left:20px;">MAKE WITH ♥ BY WAVEF</span>
             </footer>
+            
         </div>
     </div>
 
