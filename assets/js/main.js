@@ -44,7 +44,7 @@ Vue.component('card', {
         '            <li v-on:click="editCard"><i class="remixicon-edit-2-line"></i></li>',
         '            <li v-on:click="killCard"><i class="remixicon-delete-bin-line"></i></li>',
         '        </ul>',
-        '        <div class="card-content" v-bind:title="product.title" v-on:click="openLink(product.link)">',
+        '        <div class="card-content" v-bind:title="product.title" v-on:click="$parent.$parent.openLink(product.link)">',
         '            <div class="icon" :style="bgImage(product.logo)"></div>',
         '            <div class="info">',
         '                <h2>{{ product.title }}</h2>',
@@ -55,9 +55,6 @@ Vue.component('card', {
         '</li>'
     ].join(''),
     methods: {
-        openLink: function(link){
-            this.$parent.$parent.openLink(link);
-        },
         moveCard: function (e) {
         },
         editCard: function (e) {
