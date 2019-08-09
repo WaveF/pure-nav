@@ -39,7 +39,7 @@ Vue.component('card', {
     template: [
         '<li v-bind:card="product.title">',
         '    <div class="card-item">',
-        '        <ul class="card-controls" v-if="$parent.$parent.admin">',
+        '        <ul class="card-controls" v-if="$parent.$parent.isAdmin">',
         '            <li v-on:click="moveCard"><i class="remixicon-drag-move-2-fill"></i></li>',
         '            <li v-on:click="editCard"><i class="remixicon-edit-2-line"></i></li>',
         '            <li v-on:click="killCard"><i class="remixicon-delete-bin-line"></i></li>',
@@ -81,12 +81,12 @@ var app = new Vue({
         return {
             api: 'https://www.jsonstore.io/8723202190b3fd6c738095e3ac1bd2a21925efe8d90be60b70af127812223003',
             
+            isAdmin: true,
             isMobile: false,
             isCollaps: false,
             isDropdown: false,
             isMenuExpand: !this.isMobile,
 
-            admin: true,
             menu: [],
             products: []
         }
@@ -183,6 +183,20 @@ var app = new Vue({
             }).then(function(result){
                 if (!result.value) return;
                 window.open(link);
+            });
+        },
+
+        switchAdmin: function () {
+            this.isAdmin = !this.isAdmin;
+            var type = this.isAdmin?'warning':'success';
+            var mode = this.isAdmin?'管理':'常规';
+
+            Swal.fire({
+                type:  type,
+                title: '切换至'+ mode +'模式',
+                text:  '',
+                confirmButtonText: '确定',
+                showCloseButton: true,
             });
         },
 
