@@ -133,6 +133,14 @@ var app = new Vue({
                     break;
                 }
             }
+            Swal.fire({
+                position: 'top-end',
+                type: 'success',
+                html: '<span style="color:#09f;font-weight:bold;">' + cardName + '</span>&nbsp;已删除',
+                width: 300,
+                showConfirmButton: false,
+                timer: 1000
+            });
         },
 
         // 切换菜单状态
