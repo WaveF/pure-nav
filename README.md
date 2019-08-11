@@ -11,7 +11,7 @@
 
 ## 数据存储
 
-用户需自行到 [JSONBIN.IO](https://jsonbin.io) 注册并使用其提供的在线存取JSON服务充当数据库，注册后新建一个私有JSON，以后凭SECRET_KEY对前台数据进行增删查改。
+借助 [JsonStore](https://www.jsonstore.io/) 提供的在线存取JSON服务充当数据库，对前台数据进行增删查改。
 
 PURENAV 基于VUEJS非编译方式构建，旨在使用较少的库进行开发，PURE（纯净）取意于此，目前仍处于开发当中...
 

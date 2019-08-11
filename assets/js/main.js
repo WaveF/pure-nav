@@ -56,9 +56,44 @@ Vue.component('card', {
     ].join(''),
     methods: {
         moveCard: function (e) {
+            
         },
         editCard: function (e) {
-            console.log(e);
+            console.log(this.product);
+            Swal.fire({
+                title: '修改资料',
+                html: [
+                    '<select type="select" id="sfsdffds" class="swal2-select">',
+                    '  <option>a1</option>',
+                    '  <option>a2</option>',
+                    '  <option>a3</option>',
+                    '</select>',
+                    '<input type="text"     id="username" class="swal2-input" autocomplete="off"></input>',
+                    '<input type="password" id="password" class="swal2-input"></input>'
+                ].join(''),
+                confirmButtonText: '保存',
+                cancelButtonText:  '取消',
+                showCloseButton:  true,
+                showCancelButton: true,
+                reverseButtons:   true,
+                preConfirm: function () {
+                    var username = Swal.getPopup().querySelector('#username').value
+                    var password = Swal.getPopup().querySelector('#password').value
+                    if (username === '' || password === '') {
+                        Swal.showValidationMessage(`This field is required.`)
+                    }
+                    return {
+                        username: username,
+                        password: password
+                    }
+                }
+            }).then(function (result) {
+                Swal.fire([
+                    'Username: ' + result.value.username,
+                    '\n',
+                    'Password: ' + result.value.password
+                ].join(''));
+            })
         },
         killCard: function (e) {
             var card = this.getCard(e.currentTarget);
@@ -201,7 +236,7 @@ var app = new Vue({
 
             Swal.fire({
                 type:  type,
-                title: '切换至'+ mode +'模式',
+                title: mode +'模式',
                 text:  '',
                 confirmButtonText: '确定',
                 showCloseButton: true,
