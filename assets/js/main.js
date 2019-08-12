@@ -1,5 +1,6 @@
-window.$ = document.querySelector.bind(document),
-    window.$$ = document.querySelectorAll.bind(document);
+window.$ = document.querySelector.bind(document);
+window.$$ = document.querySelectorAll.bind(document);
+
 
 // 侧栏组件
 Vue.component('side-menu', {
@@ -14,11 +15,12 @@ Vue.component('side-menu', {
         // 滑动到锚点
         gotoAnchor: function (id) {
             window.scrollTo({ "behavior": "smooth", "top": $('#catagory_' + id).offsetTop - 120 })
-            if (!this.$parent.isMobile) return;
-            this.$parent.isDropdown = false;
+            if (!app.isMobile) return;
+            app.isDropdown = false;
         }
     }
 });
+
 
 // 分类卡片组
 Vue.component('card-box', {
@@ -33,18 +35,19 @@ Vue.component('card-box', {
     ].join(''),
 });
 
+
 // 卡片列表
 Vue.component('card', {
     props: ['product'],
     template: [
         '<li v-bind:card="product.title">',
         '    <div class="card-item">',
-        '        <ul class="card-controls" v-if="$parent.$parent.isAdmin">',
+        '        <ul class="card-controls" v-if="app.isAdmin">',
         '            <li v-on:click="moveCard"><i class="remixicon-drag-move-2-fill"></i></li>',
         '            <li v-on:click="editCard"><i class="remixicon-edit-2-line"></i></li>',
         '            <li v-on:click="killCard"><i class="remixicon-delete-bin-line"></i></li>',
         '        </ul>',
-        '        <div class="card-content" v-bind:title="product.title" v-on:click="$parent.$parent.openLink(product.link)">',
+        '        <div class="card-content" v-bind:title="product.title" v-on:click="app.openLink(product.link)">',
         '            <div class="icon" :style="bgImage(product.logo)"></div>',
         '            <div class="info">',
         '                <h2>{{ product.title }}</h2>',
@@ -54,6 +57,11 @@ Vue.component('card', {
         '    </div>',
         '</li>'
     ].join(''),
+    data: function() {
+        return {
+            app: app
+        }
+    },
     methods: {
         moveCard: function (e) {
             
@@ -97,7 +105,21 @@ Vue.component('card', {
         },
         killCard: function (e) {
             var card = this.getCard(e.currentTarget);
-            this.$parent.$parent.killCard(card);
+            var cardName = card.getAttribute('card');
+            for (var i in app.products) {
+                if (app.products[i].title == cardName) {
+                    app.products.splice(i, 1);
+                    break;
+                }
+            }
+            Swal.fire({
+                position: 'top-end',
+                type: 'success',
+                html: '<span style="color:#09f;font-weight:bold;">' + cardName + '</span>&nbsp;已删除',
+                width: 300,
+                showConfirmButton: false,
+                timer: 1000
+            });
         },
         getCard: function (target) {
             return target.parentNode.parentNode.parentNode;
@@ -108,6 +130,7 @@ Vue.component('card', {
         }
     }
 });
+
 
 // Vue非编译模式
 var app = new Vue({
@@ -156,10 +179,13 @@ var app = new Vue({
             var result = res.data.result;
             _this.menu = result.menu || MockData.menu;
             _this.products = result.products || MockData.products;
+
+            console.log(_this.products);
         });
     },
     methods: {
 
+        // 删除卡片
         killCard: function (target) {
             var cardName = target.getAttribute('card');
             for (var i in this.products) {

@@ -23,6 +23,15 @@ html {
         a, a:visited { color: @dark; text-decoration: none; }
         .page {
             height: inherit;
+            .master {
+                // display: none;
+                position: absolute; top: 0; left: 0; width: 100%; height: 100%; z-index: 2000;
+                .dialog {
+                    display: flex; flex-direction: column; justify-content: center; width: 34em; max-width: 100%; position: absolute; top: 50%; left: 50%; padding: 20px; transform: translate(-50%, -50%); border-radius: .3125em; background: #fff; z-index: 1;
+                    button { box-shadow: none !important; }
+                }
+                .dialog-backdrop { background: #000; height: 100%; opacity: .6; z-index: -1; }
+            }
             .sidebar {
                 position:fixed; left: 0; top: 0; width: @side-width; color: @grey; background: @dark; z-index: 999; overflow: hidden; transition: @dur; height: inherit;
                 @media screen and (max-width: 1024px) { width: 100%; height: auto; max-height: 80px; transition: .5s ease-out; }
@@ -133,11 +142,11 @@ html {
 .swal2-close { font-weight: bold !important; transform: scale(.5) rotate(0deg) !important; transition: @dur !important; }
 .swal2-close:hover { font-weight: bold !important; transform: scale(.5) rotate(180deg) !important; }
 .swal2-container.swal2-shown { background: rgba(0, 0, 0, .2) !important; }
-.swal2-file, .swal2-input, .swal2-textarea { width: 80% !important; font-size: 13px !important; padding: 10px !important; font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Helvetica, "Microsoft YaHei", "PingFang SC", "Hiragino Sans GB", SimSun, sans-serif !important; }
-.swal2-file:focus, .swal2-input:focus, .swal2-textarea:focus { border: 1px solid #09f !important; box-shadow: 0 0 4px rgba(0, 153, 255, 0.2) !important; }
+.swal2-file, .swal2-input, .swal2-textarea { width: 90% !important; font-size: 13px !important; padding: 10px !important; font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Helvetica, "Microsoft YaHei", "PingFang SC", "Hiragino Sans GB", SimSun, sans-serif !important; }
+.swal2-file:focus, .swal2-input:focus, .swal2-select:focus, .swal2-textarea:focus { border: 1px solid #09f !important; box-shadow: 0 0 4px rgba(0, 153, 255, 0.2) !important; }
 .swal2-icon { transform: scale(.7); margin: 0 auto !important; }
 .swal2-input { margin-bottom: 0 !important; }
-.swal2-select { width: 80% !important; margin-bottom: 0 !important; box-sizing: border-box; transition: border-color .3s, box-shadow .3s; border: 1px solid #d9d9d9; border-radius: .1875em; background: inherit; box-shadow: inset 0 1px 1px rgba(0,0,0,.06); color: inherit; }
+.swal2-select { width: 90% !important; height: 2.625em !important; outline: 0; font-size: 13px !important; font-family: inherit !important; margin-bottom: 0 !important; box-sizing: border-box; transition: border-color .3s, box-shadow .3s; border: 1px solid #d9d9d9; border-radius: .1875em; background: inherit; box-shadow: inset 0 1px 1px rgba(0,0,0,.06); color: inherit; }
 // .swal2-icon { width: 32px !important; height: 32px !important; margin: 10px auto !important; }
 // .swal2-icon:before { font-size: 26px !important; font-weight: bold !important; }
 .swal2-image { background-color: #f2f2f2; border-radius: 2px !important; box-shadow: 0 10px 10px rgba(0,0,0,.04) !important; }

@@ -13,6 +13,27 @@
 
 <body>
     <div id="app" class="page" v-bind:is-mobile="isMobile">
+        <div class="master">
+            <div class="dialog dialog-card-editor">
+                <button type="button" class="swal2-close" style="display: flex;">×</button>
+                <h2 class="swal2-title">修改资料</h2>
+                <select class="swal2-select">
+                    <option value="0">c1</option>
+                    <option value="1">c2</option>
+                    <option value="2">c3</option>
+                </select>
+                <input class="swal2-input" type="text" placeholder="title">
+                <input class="swal2-input" type="text" placeholder="descript">
+                <input class="swal2-input" type="text" placeholder="link">
+                <input class="swal2-input" type="text" placeholder="logo">
+
+                <div class="swal2-actions" style="display: flex;">
+                    <button type="button" class="swal2-cancel swal2-styled">取消</button>
+                    <button type="button" class="swal2-confirm swal2-styled">确定</button>
+                </div>
+            </div>
+            <div class="dialog-backdrop"></div>
+        </div>
         <div class="sidebar" v-bind:class="{ 'sidebar-collaps': isCollaps&!isMobile, 'sidebar-dropdown': isDropdown&isMobile }">
             <header class="logo"></header>
 

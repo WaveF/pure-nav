@@ -29,6 +29,38 @@ html body a:visited {
 html body .page {
   height: inherit;
 }
+html body .page .master {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 2000;
+}
+html body .page .master .dialog {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  width: 34em;
+  max-width: 100%;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  padding: 20px;
+  transform: translate(-50%, -50%);
+  border-radius: .3125em;
+  background: #fff;
+  z-index: 1;
+}
+html body .page .master .dialog button {
+  box-shadow: none !important;
+}
+html body .page .master .dialog-backdrop {
+  background: #000;
+  height: 100%;
+  opacity: .6;
+  z-index: -1;
+}
 html body .page .sidebar {
   position: fixed;
   left: 0;
@@ -343,13 +375,14 @@ html body .page .page-body-collaps {
 .swal2-file,
 .swal2-input,
 .swal2-textarea {
-  width: 80% !important;
+  width: 90% !important;
   font-size: 13px !important;
   padding: 10px !important;
   font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Helvetica, "Microsoft YaHei", "PingFang SC", "Hiragino Sans GB", SimSun, sans-serif !important;
 }
 .swal2-file:focus,
 .swal2-input:focus,
+.swal2-select:focus,
 .swal2-textarea:focus {
   border: 1px solid #09f !important;
   box-shadow: 0 0 4px rgba(0, 153, 255, 0.2) !important;
@@ -362,7 +395,11 @@ html body .page .page-body-collaps {
   margin-bottom: 0 !important;
 }
 .swal2-select {
-  width: 80% !important;
+  width: 90% !important;
+  height: 2.625em !important;
+  outline: 0;
+  font-size: 13px !important;
+  font-family: inherit !important;
   margin-bottom: 0 !important;
   box-sizing: border-box;
   transition: border-color 0.3s, box-shadow 0.3s;
